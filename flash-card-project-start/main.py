@@ -45,7 +45,6 @@ def show_new_french_word_and_flip_card():
     global FRENCH_WORD
     global ENGLISH_WORD
     DATA_DICTIONARY_ITEM = random.choice(data_dictionary_list)
-    canvas.config(bg=BACKGROUND_COLOR)
     FRENCH_WORD = DATA_DICTIONARY_ITEM['French']
     ENGLISH_WORD = DATA_DICTIONARY_ITEM['English']
     canvas.itemconfig(canvas_image, image=card_front_image)
