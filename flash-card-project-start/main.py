@@ -7,7 +7,7 @@ FRONT_LANGUAGE_FONT = ('Arial', 40, 'italic')
 FRONT_WORD_FONT = ('Arial', 60, 'bold')
 FRENCH_WORD = ''
 ENGLISH_WORD = ''
-data_dictionary_item = None
+DATA_DICTIONARY_ITEM = None
 
 # ------------- Window ------------------------------------
 window = tkinter.Tk()
@@ -29,7 +29,7 @@ else:
 
 def remove_correct_words():
     try:
-        del data_dictionary_list[data_dictionary_list.index(data_dictionary_item)]
+        del data_dictionary_list[data_dictionary_list.index(DATA_DICTIONARY_ITEM)]
         new_df = pd.DataFrame(data_dictionary_list)
         new_df.to_csv('./words_to_learn.csv', index=False)
         show_new_french_word_and_flip_card()
@@ -41,13 +41,13 @@ def remove_correct_words():
 
 def show_new_french_word_and_flip_card():
 
-    global data_dictionary_item
+    global DATA_DICTIONARY_ITEM
     global FRENCH_WORD
     global ENGLISH_WORD
-    data_dictionary_item = random.choice(data_dictionary_list)
+    DATA_DICTIONARY_ITEM = random.choice(data_dictionary_list)
     canvas.config(bg=BACKGROUND_COLOR)
-    FRENCH_WORD = data_dictionary_item['French']
-    ENGLISH_WORD = data_dictionary_item['English']
+    FRENCH_WORD = DATA_DICTIONARY_ITEM['French']
+    ENGLISH_WORD = DATA_DICTIONARY_ITEM['English']
     canvas.itemconfig(canvas_image, image=card_front_image)
     canvas.itemconfig(actual_word, text=FRENCH_WORD, fill='black')
     canvas.itemconfig(actual_language, text='French', fill='black')
