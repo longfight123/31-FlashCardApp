@@ -1,3 +1,13 @@
+"""
+
+This GUI app helps users learn words and simulates
+index cards used for learning new words.
+
+This script requires that 'tkinter' and pandas be installed within the Python
+environment you are running this script in.
+
+"""
+
 import tkinter
 import pandas as pd
 import random
@@ -28,6 +38,9 @@ else:
 
 
 def remove_correct_words():
+    """Removes the correctly guessed words so that the user only
+    receives words that they have not learned yet
+    """
     try:
         del data_dictionary_list[data_dictionary_list.index(DATA_DICTIONARY_ITEM)]
         new_df = pd.DataFrame(data_dictionary_list)
@@ -40,7 +53,8 @@ def remove_correct_words():
 
 
 def show_new_french_word_and_flip_card():
-
+    """Obtains a random word and shows it to the user, flipping to the
+    english word after 3s"""
     global DATA_DICTIONARY_ITEM
     global FRENCH_WORD
     global ENGLISH_WORD
@@ -56,12 +70,14 @@ def show_new_french_word_and_flip_card():
 
 
 def flip_card():
-
+    """Changes the appearance of the index card
+    """
     canvas.itemconfig(canvas_image, image=card_back_image)
     canvas.itemconfig(actual_language, text='English', fill='white')
     canvas.itemconfig(actual_word, text=ENGLISH_WORD, fill='white')
 
 # ------------- Canvas ------------------------------------
+
 
 canvas = tkinter.Canvas(height=526, width=800, highlightthickness=0, bg=BACKGROUND_COLOR)
 canvas.grid(row=1, column=1, columnspan=2)
